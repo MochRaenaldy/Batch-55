@@ -108,7 +108,7 @@ function renderproject() {
     </div>
 
     <div style="display:flex; flex-direction: column; gap:10px;">
-        <h2>${dataproject[index].title}</h2>
+        <h2><a href="projectdetail.html">${dataproject[index].title}</h2></a>
         <p style="font-size:10px; font-weight:600;"> Durasi: ${dataproject[index].durasi}</p>
         <p> ${dataproject[index].content} </p>
     </div>

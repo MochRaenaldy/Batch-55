@@ -107,7 +107,7 @@ textarea.deskripsi{
 }
 
 .humberger-nav-container .active {
-    background-color: orangered;
+    background-color: tomato;
 }
 
 @media only screen and (max-width: 750px){

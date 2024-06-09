@@ -8,27 +8,21 @@ const testimonial = new Promise((resolve, reject) => {
       resolve(JSON.parse(xhr.response));
     } else {
       reject("Erorr Loaded Data");
-      // salah menuliskan alamat
-      // gangguan langsung dari server (lagi perbaikan)
+
     }
   };
 
   xhr.onerror = function () {
     reject("404 Not Found");
-    // CORS
+
   };
 
-  // Mengirim permintaan ke HTTP ke Server
   xhr.send();
 });
 
 async function allTestimonial() {
   try {
     const response = await testimonial;
-    // await disini sebagai penanda bahwa butuh waktu tunggu samapi data dari API kita dapatkan.
-    // setiap penggunaan async sudah pasti pake await
-    // Hasil dari pemanggilan jika tidak menggunakan await maka akan diberikan output undifinded
-    // Jika pake await akan tampil datanya
     let testimonialHtml = ``;
 
     response.forEach((item) => {

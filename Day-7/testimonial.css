@@ -4,7 +4,10 @@
     flex-direction: column;
     align-items: center;
 }
-
+.testi {
+    display: flex;
+    flex-wrap: wrap;
+}
 .testimonials {
     display: flex;
     flex-wrap: wrap;

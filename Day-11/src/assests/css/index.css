@@ -1,0 +1,11 @@
+.active{
+    color: rgb(38, 255, 0) !important;
+}
+
+.btn-danger{
+     background-color: rgb(26, 17, 14) !important;
+}
+
+textarea{
+    resize: none;
+}

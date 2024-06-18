@@ -27,12 +27,14 @@ async function allTestimonial() {
 
     response.forEach((item) => {
       testimonialHtml += `
-      <div class="testimonial">
-        <img src="${item.image}" alt="testimonial" class="profile-testimonial">
-            <p class="quote">${item.content}</p>
-            <p class="author">- ${item.author}</p>
-            <p class="author">${item.rating} <i class="fa-solid fa-star"></i></p>
-      </div>`;
+      <div class="col-md-6 col-lg-3 mb-4 me-2">
+      <div class="px-3 shadow-sm" style="height:max-content;">
+        <img src="${item.image}" alt="testimonial" class="object-fit-cover" width="100%" height="200px" >
+            <p class="card-text" style="height:120px;">${item.content}</p>
+            <p class="card-text text-end font-weight-bold">- ${item.author}</p>
+            <p class="card-text text-end font-weight-bold">${item.rating} <i class="fa-solid fa-star"></i></p>
+            </div>
+            </div>`;
       
     });
 

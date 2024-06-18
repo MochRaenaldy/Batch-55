@@ -41,18 +41,15 @@ function viewblog(req, res) {
 
 // Array Manipulation
 function addBlog(req, res) {
-  const { title, content } = req.body;
+  const { title, startDate, endDate, deskripsi, nodejs, reactjs, nextjs, typescript} = req.body;
 
-  console.log("Title :", title);
-  console.log("content :", content);
+  const dataBlog = { title, startDate, endDate, deskripsi , nodejs, reactjs, nextjs, typescript };
 
-  const dataBlog = { title, content };
+  const unsif = data.unshift(dataBlog);
 
-  const uwu = data.unshift(dataBlog);
+  console.log(req);
 
-  console.log(uwu);
-
-  res.redirect("blog");
+  res.redirect("/blog");
 }
 
 function blogDetail(req, res) {

@@ -30,13 +30,13 @@
                         <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/blog">Blog</a>
+                        <a class="nav-link active" href="/blog">My Project</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/testimonial">Testimonial</a>
                     </li>
                 </ul>
-                <a href="/contact"><button class="btn btn-danger" type="submit">Contact Me</button></a>
+                <a href="/contact"><button class="btn btn-dark" type="submit">Contact Me</button></a>
             </div>
         </div>
     </nav>
@@ -48,10 +48,10 @@
             <div class="blog-detail-container col-md-10">
                 <h1 class="display-4 fw-bold">{{detail.title}}</h1>
                 <div class="author text-muted mb-4">{{detail.id}}
-                    | 03 Juni 2024 08:50 WIB | Arre Pangestu</div>
+                    Rey | {{detail.startDate}} - {{detail.endDate}} | {{detail.nodejs}} {{detail.reactjs}} {{detail.nextjs}} {{detail.typescript}}</div>
                 <img src="/assests/images/dumbways.png" alt="blog-detail" class="img-fluid mb-4" />
                 <p class="lead">
-                    {{detail.content}}
+                    {{detail.deskripsi}}
                 </p>
             </div>
         </div>

@@ -43,7 +43,6 @@ async function blog(req, res) {
   const query =`SELECT * FROM "Blogs"`
   const obj = await sequelize.query(query,{type: QueryTypes.SELECT})
   
-  
   res.render("blog", { data: obj });
 }
 
@@ -55,12 +54,12 @@ function viewblog(req, res) {
  async function addBlog(req, res) {
   const { title, startDate, endDate, deskripsi, nodejs, reactjs, nextjs, typescript, gambar} = req.body;
 
-  let query =`INSERT INTO public."Blogs"(title, "startDate", "endDate", deskripsi, nodejs, reactjs, nextjs, typescript, gambar")
-    VALUES ( '${title}', '${startDate}', '${endDate}', '${deskripsi}', '${nodejs}', '${reactjs}', '${nextjs}', '${typescript}', '${gambar}');`
+  let query =`INSERT INTO "Blogs"(title, "startDate", "endDate", deskripsi, nodejs, reactjs, nextjs, typescript, gambar)
+    VALUES ( '${title}', '${startDate}', '${endDate}', '${deskripsi}', '${nodejs ? nodejs :""}', '${reactjs ? reactjs :""}', '${nextjs ? nextjs :""}', '${typescript ? typescript :""}', '${gambar}')`;
 
-   await sequelize.query(query,{typeof: QueryTypes.INSERT})
+   await sequelize.query(query,{type: QueryTypes.INSERT})
   
-  res.redirect("/blog");
+  res.redirect("blog");
 }
 
 async function blogDetail(req, res) {
@@ -69,8 +68,6 @@ async function blogDetail(req, res) {
 
   const query =`SELECT * FROM "Blogs" WHERE id=${id}`
   const obj = await sequelize.query(query,{type: QueryTypes.SELECT})
-
-  console.log(obj);
 
   res.render("blog-detail", { detail: obj[0] });
 }
@@ -81,9 +78,6 @@ async function editBlogView(req, res) {
   const query =`SELECT * FROM "Blogs" WHERE id=${id}`
   const obj = await sequelize.query(query,{type: QueryTypes.SELECT})
 
-  console.log(obj);
-
-  console.log(data);
   res.render("update-blog", { data: obj[0] });
 }
 
@@ -103,7 +97,6 @@ async function deleteBlog(req, res) {
   const query =`DELETE FROM "Blogs" WHERE id=${id}`
   const obj = await sequelize.query(query,{type: QueryTypes.DELETE})
   
-
   res.redirect("/blog");
 }
 

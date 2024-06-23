@@ -8,6 +8,7 @@ const flash = require("express-flash");
 
 // ini ada di node js
 const path = require("path");
+const { handlebars } = require("hbs");
 
 const app = express();
 const port = 5000;
@@ -71,8 +72,22 @@ async function blog(req, res) {
 
   const isLogin = req.session.isLogin;
   const user = req.session.user;
-  
-  res.render("blog", { data: obj, isLogin, user });
+
+  const newData = obj.map(newObj => {
+    let newStartDate = new Date(newObj.startDate).getMonth()
+    let newEndDate = new Date(newObj.endDate).getMonth() 
+    let startDate = monthNames[newStartDate]
+    let endDate = monthNames[newEndDate]
+    let duration = (newEndDate - newStartDate) + " Bulan"
+    return ({
+      ...newObj,
+      startDate,
+      endDate,
+      duration
+    })
+  })
+
+  res.render("blog", { data: newData, isLogin, user });
 }
 
 function viewblog(req, res) {
@@ -98,6 +113,11 @@ function home(req, res) {
   res.redirect("blog");
 }
 
+const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
+  "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+];
+
+
 async function blogDetail(req, res) {
   
   const { id } = req.params;
@@ -107,6 +127,12 @@ async function blogDetail(req, res) {
 
   const isLogin = req.session.isLogin;
   const user = req.session.user;
+
+  let newStartDate = new Date(obj[0].startDate).getMonth()
+  let newEndDate = new Date(obj[0].endDate).getMonth() 
+  obj[0].startDate = monthNames[newStartDate]
+  obj[0].endDate = monthNames[newEndDate]
+  obj[0].duration = (newEndDate - newStartDate) + " Bulan"
 
   res.render("blog-detail", { detail: obj[0] ,user, isLogin});
 }
@@ -238,3 +264,28 @@ function logout(req, res) {
 app.listen(port, () => {
   console.log(`Server berjalan pada port ${port}`);
 });
+
+
+handlebars.registerHelper('monthDiff', function (d1, d2) {
+  var months;
+  var days;
+  let day1 = new Date(d1)
+  let day2 = new Date(d2)
+ months = (day2.getFullYear() - day1.getFullYear()) * 12;
+ months -= day1.getMonth();
+ months += day2.getMonth();
+  
+ return months <= 0 ? 0 : months + "bulan";
+})
+
+function getDuration(d1, d2) {
+  var months;
+  var days;
+  let day1 = new Date(d1)
+  let day2 = new Date(d2)
+ months = (day2.getFullYear() - day1.getFullYear()) * 12;
+ months -= day1.getMonth();
+ months += day2.getMonth();
+  
+ return months <= 0 ? 0 : months + "bulan";
+}

@@ -67,8 +67,22 @@
                                 <a href="/blog-detail/{{this.id}}" target="_blank">{{this.title}}</a>
                             </h3>
                             <p class="card-text"> Rey | {{this.startDate}} - {{this.endDate}} | </p>
-                            <img {{#if this.nodejs}}src="/assests/images/node.png" {{else}}=""{{/if}} width="30px" class="mx-1"> <img {{#if this.reactjs}} src="/assests/images/react.png" {{else}}=""{{/if}} width="30px" class="mx-1"> 
-                            <img {{#if this.nextjs}} src="/assests/images/next.png" {{else}}=""{{/if}} width="30px" class="mx-1"> <img {{#if this.typescript}} src="/assests/images/ts.png" {{else}}=""{{/if}} width="30px" class="mx-1">
+                             <div>
+                    durasi: {{this.duration}}
+                    
+                   </div>
+                            {{#if this.nodejs}}
+                            <img src="/assests/images/node.png" width="30px" class="mx-1"> 
+                              {{/if}}
+                            {{#if this.reactjs}}
+                            <img  src="/assests/images/react.png" width="30px" class="mx-1"> 
+                              {{/if}}
+                            {{#if this.nextjs}}
+                            <img  src="/assests/images/next.png"  width="30px" class="mx-1"> 
+                              {{/if}}
+                            {{#if this.typescript}}
+                            <img  src="/assests/images/ts.png"  width="30px" class="mx-1">
+                            {{/if}}
                             <p class="card-text">
                                 {{this.deskripsi}}
                             </p>
